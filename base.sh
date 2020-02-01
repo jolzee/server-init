@@ -2,12 +2,16 @@ sudo apt-get update
 sudo apt-get install -y \
 	git \
         nano \
+        xclip \
         apt-transport-https \
         ca-certificates \
         curl \
         gnupg-agent \
         software-properties-common \
         tmux
+
+cd /usr/local/bin
+sudo curl https://getmic.ro | bash
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
@@ -18,11 +22,11 @@ sudo add-apt-repository \
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
-git clone git@github.com:dantuluri/tmux-config.git
+git clone git@github.com:jolzee/tmux-config
 cd tmux-config
 ./install.sh
 cd ..
@@ -31,4 +35,4 @@ curl https://getcroc.schollz.com | bash
 
 echo "SSH KEY IS HERE"
 cat ~/.ssh/
-ssh-keygen -t rsa -b 4096 -C "server@sdan.cc"
+ssh-keygen -t rsa -b 4096 -C "server@jolzee"
