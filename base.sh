@@ -11,10 +11,7 @@ sudo apt-get install -y \
         tmux
 
 cd /usr/local/bin
-sudo curl https://getmic.ro | bash
-
-mkdir ~/myserver
-cd ~/myserver
+curl https://getmic.ro | sudo bash
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
@@ -29,12 +26,14 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
+cd ~
+mdir code
+cd code
 git clone git@github.com:jolzee/tmux-config
 cd tmux-config
+chmod +x ./install.sh
 ./install.sh
-cd ..
-
-curl https://getcroc.schollz.com | bash
+cd ~
 
 echo "SSH KEY IS HERE"
 cat ~/.ssh/
